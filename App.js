@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState("");
@@ -42,17 +42,20 @@ export default function App() {
           }}
         />
       </View>
-      <ScrollView style={styles.goalsListContaier}>
-        {goals?.length > 0 ? (
-          goals?.map((item) => (
-            <View key={item} style={styles?.goalItem}>
-              <Text style={{ color: "#fff" }}>{item}</Text>
+
+      {goals?.length > 0 ? (
+        <FlatList
+          style={styles.goalsListContaier}
+          data={goals}
+          renderItem={(itemData) => (
+            <View style={styles?.goalItem}>
+              <Text style={{ color: "#fff" }}>{itemData?.item}</Text>
             </View>
-          ))
-        ) : (
-          <Text style={styles?.notFound}>There is no Goal to show!</Text>
-        )}
-      </ScrollView>
+          )}
+        />
+      ) : (
+        <Text style={styles?.notFound}>There is no Goal to show!</Text>
+      )}
     </View>
   );
 }
