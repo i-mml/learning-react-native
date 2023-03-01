@@ -1,9 +1,28 @@
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState("");
-  const [goals, setGoals] = useState([]);
+  const [goals, setGoals] = useState([
+    "amir",
+    "kabir",
+    "saghir",
+    "reza",
+    "kazem",
+    "masoud",
+    "amir2",
+    "kabir2",
+    "saghir2",
+    "reza2",
+    "kazem2",
+    "masoud2",
+    "amir3",
+    "kabir3",
+    "saghir3",
+    "reza3",
+    "kazem3",
+    "masoud3",
+  ]);
 
   return (
     <View style={styles.container}>
@@ -23,7 +42,7 @@ export default function App() {
           }}
         />
       </View>
-      <View style={styles.goalsListContaier}>
+      <ScrollView style={styles.goalsListContaier}>
         {goals?.length > 0 ? (
           goals?.map((item) => (
             <View key={item} style={styles?.goalItem}>
@@ -33,7 +52,7 @@ export default function App() {
         ) : (
           <Text style={styles?.notFound}>There is no Goal to show!</Text>
         )}
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -60,7 +79,6 @@ const styles = StyleSheet.create({
   },
   goalsListContaier: {
     marginTop: 10,
-    justifyContent: "center",
   },
   goalItem: {
     backgroundColor: "#58a7e6",
