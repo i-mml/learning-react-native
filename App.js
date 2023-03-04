@@ -14,7 +14,16 @@ export default function App() {
         <FlatList
           style={styles.goalsListContaier}
           data={goals}
-          renderItem={(itemData) => <GoalItem title={itemData} />}
+          renderItem={(itemData) => (
+            <GoalItem
+              title={itemData}
+              onDelete={() =>
+                setGoals(
+                  goals?.filter((item, index) => index != itemData?.index)
+                )
+              }
+            />
+          )}
         />
       ) : (
         <Text style={styles?.notFound}>There is no Goal to show!</Text>
