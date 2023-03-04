@@ -5,7 +5,7 @@ import GoalInput from './components/GoalInput';
 import { GoalItem } from './components/GoalItem';
 
 export default function App() {
-  const [goals, setGoals] = useState(["what he hell"]);
+  const [goals, setGoals] = useState([]);
 
   return (
     <View style={styles.container}>
