@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import Card from '../components/Card';
+import colors from '../constants/Colors';
 
 const StartGameScreen = () => {
   return (
@@ -12,10 +13,10 @@ const StartGameScreen = () => {
         <TextInput placeholder="Guess a Number" />
         <View style={styles?.buttonContaienr}>
           <View style={styles?.button}>
-            <Button title="Reset" onPress={() => {}} color={Colors.scondary} />
+            <Button title="Reset" onPress={() => {}} color={colors.scondary} />
           </View>
           <View style={styles?.button}>
-            <Button title="Confirm" onPress={() => {}} color={Colors.primary} />
+            <Button title="Confirm" onPress={() => {}} color={colors.primary} />
           </View>
         </View>
       </Card>
