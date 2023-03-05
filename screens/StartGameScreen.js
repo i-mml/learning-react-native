@@ -7,14 +7,12 @@ const StartGameScreen = () => {
   return (
     <View style={styles.screen}>
       <Text style={styles?.title}>The Game Screen</Text>
-      <Card>
-        <View style={styles?.inputContaienr}>
-          <Text>Select a Number</Text>
-          <TextInput placeholder="Guess a Number" />
-          <View style={styles?.buttonContaienr}>
-            <Button title="Reset" onPress={() => {}} />
-            <Button title="Confirm" onPress={() => {}} />
-          </View>
+      <Card style={styles?.inputContaienr}>
+        <Text>Select a Number</Text>
+        <TextInput placeholder="Guess a Number" />
+        <View style={styles?.buttonContaienr}>
+          <Button title="Reset" onPress={() => {}} />
+          <Button title="Confirm" onPress={() => {}} />
         </View>
       </Card>
     </View>
