@@ -11,8 +11,12 @@ const StartGameScreen = () => {
         <Text>Select a Number</Text>
         <TextInput placeholder="Guess a Number" />
         <View style={styles?.buttonContaienr}>
-          <Button title="Reset" onPress={() => {}} />
-          <Button title="Confirm" onPress={() => {}} />
+          <View style={styles?.button}>
+            <Button title="Reset" onPress={() => {}} color={Colors.scondary} />
+          </View>
+          <View style={styles?.button}>
+            <Button title="Confirm" onPress={() => {}} color={Colors.primary} />
+          </View>
         </View>
       </Card>
     </View>
@@ -41,6 +45,9 @@ const styles = StyleSheet.create({
     width: 300,
     maxWidth: "80%",
     alignItems: "center",
+  },
+  button: {
+    width: 95,
   },
 });
 

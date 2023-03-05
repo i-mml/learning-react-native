@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "red",
     paddingVertical: 18,
-    backgroundColor: "#f7287b",
+    backgroundColor: Colors?.primary,
     justifyContent: "center",
   },
   text: {
