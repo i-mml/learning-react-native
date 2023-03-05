@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 import Card from '../components/Card';
@@ -48,6 +48,11 @@ const GameScreen = (props) => {
     );
     setCurrentGuess(nextNumber);
   };
+
+  useEffect(() => {
+    if (currentGuess === props?.userChoice) {
+    }
+  }, []);
 
   return (
     <View style={styles.screen}>
