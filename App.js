@@ -1,4 +1,4 @@
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
@@ -10,7 +10,7 @@ import StartGameScreen from './screens/StartGameScreen';
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    "iran-sans": require("./assets/fonts/iranSans/ttf"),
+    "iran-sans": require("./assets/fonts/iranSans/ttf/IRANSansWeb(FaNum)_Medium.ttf"),
     "iran-sans-bold": require("./assets/fonts/iranSans/ttf/IRANSansWeb(FaNum)_Bold.ttf"),
   });
 };
