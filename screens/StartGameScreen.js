@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
+import BodyText from '../components/BodyText';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
@@ -40,7 +41,7 @@ const StartGameScreen = (props) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles?.summaryContainer}>
-        <Text>You Selected</Text>
+        <BodyText>You Selected</BodyText>
         <NumberContainer>{selectedNumber}</NumberContainer>
         <Button
           title="START GAME"
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     marginVertical: 10,
-    fontFamily:"iran-sans-bold"
+    fontFamily: "iran-sans-bold",
   },
   buttonContaienr: {
     flexDirection: "row",
