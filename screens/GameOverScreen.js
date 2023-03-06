@@ -6,18 +6,31 @@ const GameOverScreen = (props) => {
   return (
     <View style={styles?.screen}>
       <Text>The Game is Over!</Text>
-      <Text>Number of rounds: {guessRounds}</Text>
-      <Text>Number was: {userNumber}</Text>
-      <Button title="NEW GAME" onPress={() => restartGame()} />
+      <View style={styles?.text}>
+        <Text>Number of rounds: {guessRounds}</Text>
+      </View>
+      <View style={styles?.text}>
+        <Text>Number was: {userNumber}</Text>
+      </View>
+      <View style={styles?.button}>
+        <Button title="NEW GAME" onPress={() => restartGame()} color="black"/>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
     padding: 10,
     alignItems: "center",
+    height: "75%",
+    justifyContent: "center",
+  },
+  text: {
+    marginVertical: 10,
+  },
+  button: {
+    marginTop: 20,
   },
 });
 
