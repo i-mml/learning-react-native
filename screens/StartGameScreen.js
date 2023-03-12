@@ -4,6 +4,7 @@ import { Alert, Button, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, Vi
 import BodyText from '../components/BodyText';
 import Card from '../components/Card';
 import Input from '../components/Input';
+import MainButton from '../components/MainButton';
 import NumberContainer from '../components/NumberContainer';
 import colors from '../constants/Colors';
 
@@ -43,9 +44,9 @@ const StartGameScreen = (props) => {
       <Card style={styles?.summaryContainer}>
         <BodyText>You Selected</BodyText>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button
+        <MainButton
           title="START GAME"
-          onPress={() => props?.onStartGame(selectedNumber)}
+          onClick={() => props?.onStartGame(selectedNumber)}
         />
       </Card>
     );
