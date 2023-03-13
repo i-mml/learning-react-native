@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
 
 import BodyText from '../components/BodyText';
 import Card from '../components/Card';
@@ -19,10 +19,10 @@ const generateRandomBetween = (min, max, exclude) => {
   }
 };
 
-const renderListItem = (value, numOfRound) => (
+const renderListItem = (listLength, itemData) => (
   <View style={styles.listIem}>
-    <BodyText>#{numOfRound}</BodyText>
-    <Text>{value}</Text>
+    <BodyText>#{listLength - itemData.index}</BodyText>
+    <Text>{itemData.item}</Text>
   </View>
 );
 
@@ -31,7 +31,7 @@ const GameScreen = (props) => {
 
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
-  const [pastGuesses, setPastGuesses] = useState([initialGuess]);
+  const [pastGuesses, setPastGuesses] = useState([initialGuess?.toString()]);
 
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
@@ -63,7 +63,10 @@ const GameScreen = (props) => {
     );
     setCurrentGuess(nextNumber);
     // setRounds((curRounds) => curRounds + 1);
-    setPastGuesses((curPastGuesses) => [nextNumber, ...curPastGuesses]);
+    setPastGuesses((curPastGuesses) => [
+      nextNumber?.toString(),
+      ...curPastGuesses,
+    ]);
   };
 
   useEffect(() => {
@@ -86,12 +89,18 @@ const GameScreen = (props) => {
           onClick={() => nextGuessHandler("higher")}
         />
       </Card>
-      <View style={styles.list}>
-        <ScrollView>
+      <View style={styles.listContainer}>
+        {/* <ScrollView contentContainerStyle={styles.list}>
           {pastGuesses?.map((guess, index) =>
             renderListItem(guess, pastGuesses.length - index)
           )}
-        </ScrollView>
+        </ScrollView> */}
+        <FlatList
+          keyExtractor={(item) => item}
+          data={pastGuesses}
+          renderItem={(item) => renderListItem(pastGuesses?.length, item)}
+          contentContainerStyle={styles.list}
+        />
       </View>
     </View>
   );
@@ -109,16 +118,22 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: "90%",
   },
-  list: {
+  listContainer: {
     width: "50%",
     // for making scrollable list
     flex: 1,
   },
+  list: {
+    flexGrow: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
   listIem: {
+    width: "60%",
     borderColor: "#ccc",
     borderWidth: 1,
     borderRadius: 10,
-    padding: 50,
+    padding: 15,
     marginVertical: 10,
     backgroundColor: "#feeeee",
     flexDirection: "row",
