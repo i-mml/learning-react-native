@@ -13,7 +13,7 @@ const GameOverScreen = (props) => {
       <Text style={defaultStyles.title}>The Game is Over!</Text>
       <View style={styles.imageContainer}>
         <Image
-          fadeDuration={1000}
+          fadeDuration={200}
           // source={require("../assets/picture1.jpg")}
           source={{
             uri: "https://newsmedia.tasnimnews.com/Tasnim/Uploaded/Image/1398/06/03/1398060311074941218199214.jpg",

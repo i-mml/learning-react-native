@@ -1,7 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import BodyText from '../components/BodyText';
 import Card from '../components/Card';
 import MainButton from '../components/MainButton';
 import NumberContainer from '../components/NumberContainer';
@@ -18,16 +19,24 @@ const generateRandomBetween = (min, max, exclude) => {
   }
 };
 
-const GameScreen = (props) => {
-  const { userChoice, onGameOver } = props;
+const renderListItem = (value, numOfRound) => (
+  <View style={styles.listIem}>
+    <BodyText>#{numOfRound}</BodyText>
+    <Text>{value}</Text>
+  </View>
+);
 
-  const [currentGuess, setCurrentGuess] = useState(
-    generateRandomBetween(1, 100, userChoice)
-  );
-  const [rounds, setRounds] = useState(0);
+const GameScreen = (props) => {
+  const initialGuess = generateRandomBetween(1, 100, userChoice);
+
+  const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+  const [pastGuesses, setPastGuesses] = useState([initialGuess]);
 
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
+
+  const { userChoice, onGameOver } = props;
 
   const nextGuessHandler = (direction) => {
     if (
@@ -53,12 +62,13 @@ const GameScreen = (props) => {
       currentGuess
     );
     setCurrentGuess(nextNumber);
-    setRounds((curRounds) => curRounds + 1);
+    // setRounds((curRounds) => curRounds + 1);
+    setPastGuesses((curPastGuesses) => [nextNumber, ...curPastGuesses]);
   };
 
   useEffect(() => {
     if (currentGuess === userChoice) {
-      onGameOver(rounds);
+      onGameOver(pastGuesses?.length);
     }
   }, [currentGuess, userChoice, onGameOver]);
 
@@ -76,6 +86,13 @@ const GameScreen = (props) => {
           onClick={() => nextGuessHandler("higher")}
         />
       </Card>
+      <View style={styles.list}>
+        <ScrollView>
+          {pastGuesses?.map((guess, index) =>
+            renderListItem(guess, pastGuesses.length - index)
+          )}
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -91,6 +108,22 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginTop: 20,
     width: "90%",
+  },
+  list: {
+    width: "50%",
+    // for making scrollable list
+    flex: 1,
+  },
+  listIem: {
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 50,
+    marginVertical: 10,
+    backgroundColor: "#feeeee",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
   },
 });
 
