@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   list: {
     flexGrow: 1,
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
   },
   listIem: {
     width: "60%",
