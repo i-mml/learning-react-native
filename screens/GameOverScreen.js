@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 
 import BodyText from '../components/BodyText';
 import MainButton from '../components/MainButton';
@@ -34,7 +34,11 @@ const GameOverScreen = (props) => {
         <Text>Number was: {userNumber}</Text>
       </View>
       <View style={styles?.button}>
-        <MainButton title="NEW GAME" onClick={() => restartGame()} color="black" />
+        <MainButton
+          title="NEW GAME"
+          onClick={() => restartGame()}
+          color="black"
+        />
       </View>
     </View>
   );
@@ -48,10 +52,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imageContainer: {
-    width: 200,
-    height: 200,
+    width: Dimensions.get("window").width * 0.5,
+    height: Dimensions.get("window").width * 0.5,
     borderRadius: 150,
-    marginVertical: 5,
+    borderColor: "black",
+    borderWidth: 3,
+    marginVertical: Dimensions.get("window").height / 40,
   },
   image: {
     width: "100%",
