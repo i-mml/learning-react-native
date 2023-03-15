@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
 import colors from '../constants/Colors';
 
@@ -19,11 +19,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors?.primary,
     paddingVertical: 18,
-    backgroundColor: colors?.primary,
+    backgroundColor: Platform.OS === "android" ? colors?.primary : "white",
     justifyContent: "center",
+    borderBottomColor: Platform.OS === "ios" ? "black" : "transparent",
+    borderBottomWidth: Platform.OS === "ios" ? 1 : 0,
   },
   text: {
-    color: "black",
+    color: Platform.OS === "ios" ? "black" : "#fff",
     textAlign: "center",
     fontSize: 19,
   },
