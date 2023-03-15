@@ -1,7 +1,7 @@
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 import Header from './components/Header';
 import GameOverScreen from './screens/GameOverScreen';
@@ -60,11 +60,11 @@ export default function App() {
   }
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <Header title="THIS IS HEADER" />
       {content}
       {/* <GameScreen setCurrentScreen={setCurrentScreen} /> */}
-    </View>
+    </SafeAreaView>
   );
 }
 

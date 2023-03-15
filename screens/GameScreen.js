@@ -1,5 +1,4 @@
 import { Ionicons } from '@expo/vector-icons';
-import * as ScreenOrientation from 'expo-screen-orientation';
 import React, { useEffect, useRef, useState } from 'react';
 import { Alert, Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
 
@@ -28,7 +27,8 @@ const renderListItem = (listLength, itemData) => (
 );
 
 const GameScreen = (props) => {
-  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+  // for lock the orientatino 
+  // ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
 
   const initialGuess = generateRandomBetween(1, 100, userChoice);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
