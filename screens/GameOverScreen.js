@@ -9,7 +9,7 @@ import defaultStyles from '../constants/default-styles';
 const GameOverScreen = (props) => {
   const { guessRounds, userNumber, restartGame } = props;
   return (
-    <ScrollView>
+    <ScrollView> 
       <View style={styles?.screen}>
         <Text style={defaultStyles.title}>The Game is Over!</Text>
         <View style={styles.imageContainer}>
@@ -48,7 +48,7 @@ const GameOverScreen = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 10,
+    paddingVertical: 10,
     alignItems: "center",
     // height: "75%",
     justifyContent: "center",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   guessRound: {
-    color: Colors.scondary,
+    color:  Colors.scondary,
   },
 });
 
