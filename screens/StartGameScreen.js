@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Alert,
   Button,
@@ -24,6 +24,10 @@ const StartGameScreen = (props) => {
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState(0);
 
+  const [buttonWidth, setButtonWidth] = useState(
+    Dimensions.get("window").width / 4
+  );
+
   const numberInputHandler = (inputText) => {
     setEnteredValue(inputText?.replace(/[^0-9]/g, ""));
   };
@@ -32,6 +36,17 @@ const StartGameScreen = (props) => {
     setEnteredValue("");
     setConfirmed(false);
   };
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setButtonWidth(Dimensions.get("window").width / 4);
+    };
+    Dimensions.addEventListener("change", updateLayout);
+
+    return () => {
+      Dimensions.removeEventListener("change", updateLayout);
+    };
+  }, []);
 
   const confirmInputHandler = () => {
     const chosenNumber = parseInt(enteredValue);
@@ -83,14 +98,22 @@ const StartGameScreen = (props) => {
                 value={enteredValue}
               />
               <View style={styles?.buttonContaienr}>
-                <View style={styles?.button}>
+                <View
+                  style={{
+                    width: buttonWidth,
+                  }}
+                >
                   <Button
                     title="Reset"
                     onPress={resetInputHandler}
                     color={colors.scondary}
                   />
                 </View>
-                <View style={styles?.button}>
+                <View
+                  style={{
+                    width: buttonWidth,
+                  }}
+                >
                   <Button
                     title="Confirm"
                     onPress={confirmInputHandler}
