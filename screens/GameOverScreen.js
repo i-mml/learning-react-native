@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: Dimensions.get("window").width * 0.5,
     height: Dimensions.get("window").width * 0.5,
-    borderRadius: 150,
+    borderRadius: (Dimensions.get("window").width * 0.5) / 2,
     borderColor: "black",
     borderWidth: 3,
     marginVertical: Dimensions.get("window").height / 40,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
-    borderRadius: 150,
+    borderRadius: (Dimensions.get("window").width * 0.5) / 2,
   },
   text: {
     marginVertical: 10,
