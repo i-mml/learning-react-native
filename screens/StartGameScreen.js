@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Alert, Button, Dimensions, Keyboard, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native';
 
 import BodyText from '../components/BodyText';
 import Card from '../components/Card';
@@ -112,12 +112,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   inputContaienr: {
-    width: 300,
-    maxWidth: "80%",
+    width: "80%",
+    maxWidth: "95%",
+    minWidth: 300,
     alignItems: "center",
   },
   button: {
-    width: 95,
+    // width: 95,
+    width: Dimensions.get("window").width / 4,
   },
   input: {
     width: "70%",
