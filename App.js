@@ -1,44 +1,9 @@
-import { useState } from 'react';
-import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
-
-import GoalInput from './components/GoalInput';
-import { GoalItem } from './components/GoalItem';
+import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-  const [goals, setGoals] = useState([]);
-  const [isAddMode, setIsAddMode] = useState(false);
   return (
     <View style={styles.screen}>
-      <Button
-        title="Add New Goal"
-        onPress={() => setIsAddMode(true)}
-        style={styles.addModeButton}
-        color={"#548689"}
-      />
-      <GoalInput
-        visible={isAddMode}
-        setVisible={() => setIsAddMode(false)}
-        setGoals={setGoals}
-        goals={goals}
-      />
-      {goals?.length > 0 ? (
-        <FlatList
-          style={styles.goalsListContaier}
-          data={goals}
-          renderItem={(itemData) => (
-            <GoalItem
-              title={itemData}
-              onDelete={() =>
-                setGoals(
-                  goals?.filter((item, index) => index != itemData?.index)
-                )
-              }
-            />
-          )}
-        />
-      ) : (
-        <Text style={styles?.notFound}>There is no Goal to show!</Text>
-      )}
+      <Text>This is the App file</Text>
     </View>
   );
 }
