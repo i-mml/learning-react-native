@@ -4,23 +4,21 @@ import { CATEGORIES } from "../data/dummy-data";
 import { TouchableOpacity } from "react-native";
 import Colors from "../constants/Colors";
 import { Platform } from "react-native";
+import CategoryGridTile from "../components/CategoryGridTile";
 
 const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {
     return (
-      <TouchableOpacity
-        onPress={() => {
+      <CategoryGridTile
+        title={itemData?.item?.title}
+        color={itemData?.item?.color}
+        onSelect={() => {
           // when we want to go to the current screen we use navigation.push("ROUTE_NAME")
           props?.navigation.navigate("CategoryMeals", {
             categoryId: itemData?.item?.id,
           });
         }}
-        style={styles?.gridItem}
-      >
-        <View>
-          <Text>{itemData?.item?.title}</Text>
-        </View>
-      </TouchableOpacity>
+      />
     );
   };
 
