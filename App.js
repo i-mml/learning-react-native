@@ -2,8 +2,11 @@ import { StyleSheet, Text, View } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { useState } from "react";
-// import { AppLoading } from "expo-app-loadi`ng";
+import { enableScreens } from "react-native-screens";
 import MealsNavigator from "./navigation/MealsNavigator";
+
+// for improve performance in navigations
+enableScreens();
 
 const fetchFonts = () => {
   return Font.loadAsync({
