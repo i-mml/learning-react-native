@@ -11,7 +11,9 @@ const CategoriesScreen = (props) => {
       <TouchableOpacity
         onPress={() => {
           // when we want to go to the current screen we use navigation.push("ROUTE_NAME")
-          props?.navigation.navigate("CategoryMeals");
+          props?.navigation.navigate("CategoryMeals", {
+            categoryId: itemData?.item?.id,
+          });
         }}
         style={styles?.gridItem}
       >
