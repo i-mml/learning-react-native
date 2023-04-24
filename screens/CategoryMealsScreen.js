@@ -29,9 +29,6 @@ const CategoryMealsScreen = (props) => {
   const displayedMeals = MEALS.filter(
     (meal) => meal.categoryIds?.indexOf(catId) >= 0
   );
-  console.log(catId);
-
-  console.log(displayedMeals);
 
   return (
     <View style={styles.screen}>
