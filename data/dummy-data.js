@@ -21,7 +21,7 @@ export const MEALS = [
     "Asparagus Salad with Cherry Tomatoes",
     "luxurious",
     "simple",
-    "https://cdn.pixaba.com/photo/2018/04/09/18/26/asparagus-3304997_1280/png",
+    "https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg",
     30,
     [
       "white and Green Asoaragus",
@@ -50,7 +50,7 @@ export const MEALS = [
     "Creamy Indian Chic Curry",
     "pricey",
     "chollengin",
-    "https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280",
+    "https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg",
     35,
     [
       "white and Green Asoaragus",
