@@ -1,5 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
-
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createAppContainer } from "react-navigation";
 import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryMealsScreen from "../screens/CategoryMealsScreen";
@@ -8,15 +8,17 @@ import { Platform } from "react-native";
 import Colors from "../constants/Colors";
 
 const MealsNavigator = createStackNavigator(
+  // routes :
   {
     Categories: CategoriesScreen,
+    // another way to identify a route
     CategoryMeals: {
       screen: CategoryMealsScreen,
     },
     MealDetail: MealDetailScreen,
   },
+  // options and configs :
   {
-    // initialRouteName: "something initial",
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor:
@@ -27,5 +29,10 @@ const MealsNavigator = createStackNavigator(
     },
   }
 );
+// we want to have two tab (all meals , favorite meals)
+// const MealsFavTabNavigaor = createBottomTabNavigator({
+//   Meals: MealsNavigator,
+//   Favorites: FavoritesScreen,
+// });
 
 export default createAppContainer(MealsNavigator);
