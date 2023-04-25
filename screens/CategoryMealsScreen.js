@@ -58,6 +58,7 @@ CategoryMealsScreen.navigationOptions = (navigationData) => {
 
 const styles = StyleSheet.create({
   screen: {
+    marginVertical: 10,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
