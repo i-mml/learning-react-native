@@ -4,20 +4,20 @@ import { MEALS } from "../data/dummy-data";
 import CustomHeaderButton from "../components/HeaderButton";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
-const MealDetailScreen = (props) => {
-  const mealId = props?.navigation?.getParam("mealId");
+const MealDetailScreen = ({ route, navigation }) => {
+  const { mealId } = route.params;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
   return (
     <View style={styles.screen}>
       <Text>{selectedMeal?.title}</Text>
-      <Button title="Go Back" onPress={() => props.navigation.goBack()} />
+      <Button title="Go Back" onPress={() => navigation.goBack()} />
       {/* navigation.popToTop is used to go to top of navigation (just in stack navigation) */}
       <Button
         title="Go To Categories"
         onPress={() => {
-          props.navigation.popToTop();
+          navigation.popToTop();
         }}
       />
     </View>

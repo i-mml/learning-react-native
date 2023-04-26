@@ -15,7 +15,7 @@ const CategoriesScreen = (props) => {
         onSelect={() => {
           // when we want to go to the current screen we use navigation.push("ROUTE_NAME")
           props?.navigation.navigate("CategoryMeals", {
-            categoryId: itemData?.item?.id,
+            catId: itemData?.item?.id,
           });
         }}
       />
