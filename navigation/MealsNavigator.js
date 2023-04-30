@@ -13,10 +13,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 const Stack = createNativeStackNavigator();
-const Tab =
-  Platform?.OS === "android"
-    ? createMaterialBottomTabNavigator()
-    : createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 const defaultStackNavigatorOptions = {
   headerStyle: {
@@ -164,12 +161,20 @@ export default function MealsFavTabNavigator() {
         <Tab.Screen
           name="CategoriesNested"
           component={CateggoriesNavigator}
-          options={{ ...tabScreenConfigs, tabBarIcon: "menu" }}
+          options={{
+            ...tabScreenConfigs,
+            tabBarIcon: "menu",
+            headerShown: false,
+          }}
         />
         <Tab.Screen
           name="FavoritesNested"
           component={FavoritesNavigator}
-          options={{ ...tabScreenConfigs, tabBarIcon: "bookmark-outline" }}
+          options={{
+            ...tabScreenConfigs,
+            tabBarIcon: "bookmark-outline",
+            headerShown: false,
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>

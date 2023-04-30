@@ -12,6 +12,17 @@ const MealDetailScreen = ({ route, navigation }) => {
   useEffect(() => {
     navigation.setOptions({
       title: selectedMeal?.title,
+      headerRight: () => {
+        return (
+          <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+            <Item
+              title="Favorite"
+              iconName="ios-star"
+              onPress={() => console.log("mark as Favorite")}
+            />
+          </HeaderButtons>
+        );
+      },
     });
   }, []);
 
