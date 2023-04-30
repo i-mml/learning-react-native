@@ -10,9 +10,13 @@ import FavoritesScreen from "../screens/FavoritesScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+const Tab =
+  Platform?.OS === "android"
+    ? createMaterialBottomTabNavigator()
+    : createBottomTabNavigator();
 
 const MyTabBar = ({ state, descriptors, navigation }) => {
   return (
@@ -134,13 +138,18 @@ const MealsNavigator2 = () => {
 export default function MealsFavTabNavigator() {
   return (
     <NavigationContainer>
-      <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+      <Tab.Navigator
+        tabBar={(props) => <MyTabBar {...props} />}
+        shifting
+        activeColor={Colors.accentColor}
+        inactiveColor="#999"
+      >
         <Tab.Screen
           name="CategoriesNested"
           component={MealsNavigator2}
           options={{
             headerShown: false,
-            tabBarIcon: "ios-restaurant",
+            tabBarIcon: "menu",
           }}
         />
         <Tab.Screen
@@ -151,6 +160,7 @@ export default function MealsFavTabNavigator() {
               backgroundColor:
                 Platform.OS === "android" ? Colors.primaryColor : "white",
             },
+
             headerTintColor:
               Platform.OS === "android" ? "white" : Colors.primaryColor,
             tabBarIcon: "bookmark-outline",
