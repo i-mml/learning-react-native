@@ -19,6 +19,14 @@ const defaultStackNavigatorOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "white",
   },
+  headerTitleStyle: {
+    fontSize: 25,
+    fontFamily: "iran-sans-bold",
+  },
+  // fot the IOS back title
+  headerBackTitleStyle: {
+    fontFamily: "iran-sans",
+  },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
 };
 
@@ -165,6 +173,7 @@ export default function MealsFavTabNavigator() {
             ...tabScreenConfigs,
             tabBarIcon: "menu",
             headerShown: false,
+            tabBarLabel: "Categories",
           }}
         />
         <Tab.Screen
@@ -174,6 +183,7 @@ export default function MealsFavTabNavigator() {
             ...tabScreenConfigs,
             tabBarIcon: "bookmark-outline",
             headerShown: false,
+            tabBarLabel: "Favorites",
           }}
         />
       </Tab.Navigator>
