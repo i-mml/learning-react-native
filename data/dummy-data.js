@@ -21,7 +21,7 @@ export const MEALS = [
     "Asparagus Salad with Cherry Tomatoes",
     "luxurious",
     "simple",
-    "https://cdn.pixabay.com/photo/2018/04/09/18/26/asparagus-3304997_1280.jpg",
+    "https://noktechi.ir/wp-content/uploads/2021/12/salad-uonani.jpg",
     30,
     [
       "white and Green Asoaragus",
@@ -50,7 +50,7 @@ export const MEALS = [
     "Creamy Indian Chic Curry",
     "pricey",
     "chollengin",
-    "https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg",
+    "https://images.kojaro.com/2018/12/29bc2936-d3be-4fa7-bb36-58e0b6ff5ad6.jpg",
     35,
     [
       "white and Green Asoaragus",
@@ -79,7 +79,7 @@ export const MEALS = [
     "Pizza",
     "pricey",
     "chollengin",
-    "https://cdn.pixabay.com/photo/2020/04/29/03/30/pizza-5107039_960_720.jpg",
+    "https://noktechi.ir/wp-content/uploads/2021/09/pitza-morgh-gharch.jpg",
     35,
     [
       "white and Green Asoaragus",
@@ -108,7 +108,7 @@ export const MEALS = [
     "Pasta",
     "pricey",
     "chollengin",
-    "https://cdn.pixabay.com/photo/2016/07/21/18/40/mass-1533271_960_720.jpg",
+    "https://khorshad.com/wp-content/uploads/2022/01/A-KHORSHAD-Pasta-Penne-Chicken-1-scaled.webp",
     35,
     [
       "white and Green Asoaragus",
@@ -137,7 +137,7 @@ export const MEALS = [
     "Hamburgers",
     "pricey",
     "chollengin",
-    "https://cdn.pixabay.com/photo/2019/04/24/12/11/burger-4152013_960_720.jpg",
+    "https://cdn.fararu.com/files/fa/news/1401/10/30/1445189_754.jpg",
     35,
     [
       "white and Green Asoaragus",
