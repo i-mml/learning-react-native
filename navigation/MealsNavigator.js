@@ -173,7 +173,12 @@ export default function MealsFavTabNavigator() {
             ...tabScreenConfigs,
             tabBarIcon: "menu",
             headerShown: false,
-            tabBarLabel: "Categories",
+            tabBarLabel:
+              Platform?.OS === "android" ? (
+                <Text style={{ fontFamily: "iran-sans-bold" }}>Categories</Text>
+              ) : (
+                "Categories"
+              ),
           }}
         />
         <Tab.Screen
@@ -183,7 +188,12 @@ export default function MealsFavTabNavigator() {
             ...tabScreenConfigs,
             tabBarIcon: "bookmark-outline",
             headerShown: false,
-            tabBarLabel: "Favorites",
+            tabBarLabel:
+              Platform?.OS === "android" ? (
+                <Text style={{ fontFamily: "iran-sans-bold" }}>Favorites</Text>
+              ) : (
+                "Favorites"
+              ),
           }}
         />
       </Tab.Navigator>
