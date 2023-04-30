@@ -24,6 +24,9 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
         flexDirection: "row",
         // height: 30,
         backgroundColor: "white",
+        paddingVertical: 5,
+        borderTopWidth: 3,
+        borderTopColor: "#eee",
       }}
     >
       {state.routes.map((route, index) => {
@@ -70,9 +73,10 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
               flex: 1,
               width: "50%",
               backgroundColor:
-                isFocused && Platform.OS === "android"
-                  ? Colors.primaryColor
-                  : "white",
+                // isFocused && Platform.OS === "android"
+                //   ? Colors.primaryColor
+                //   :
+                "white",
             }}
             key={index}
           >
@@ -83,8 +87,8 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
                   style={{
                     color:
                       isFocused && Platform.OS === "android"
-                        ? "white"
-                        : Colors.primaryColor,
+                        ? Colors.accentColor
+                        : "#999",
                   }}
                   size={25}
                 />
@@ -94,8 +98,8 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
               style={{
                 color:
                   isFocused && Platform.OS === "android"
-                    ? "white"
-                    : Colors.primaryColor,
+                    ? Colors.accentColor
+                    : "#999",
                 textAlign: "center",
               }}
             >
