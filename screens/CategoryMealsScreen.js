@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { CATEGORIES, MEALS } from "../data/dummy-data";
 import Colors from "../constants/Colors";
 import { Platform } from "react-native";
 import { Text } from "react-native";
 import MealItem from "../components/MealItem";
+import MealList from "../components/MealList";
 
 const CategoryMealsScreen = ({ route, navigation }) => {
   const { catId } = route.params;
+  const categoryData = CATEGORIES?.find((cat) => cat?.id === catId);
 
   const renderMealItem = (itemData) => {
     return (
@@ -30,16 +32,13 @@ const CategoryMealsScreen = ({ route, navigation }) => {
     (meal) => meal.categoryIds?.indexOf(catId) >= 0
   );
 
-  return (
-    <View style={styles.screen}>
-      <FlatList
-        data={displayedMeals}
-        keyExtractor={(item) => item.id}
-        renderItem={renderMealItem}
-        style={{ width: "90%" }}
-      />
-    </View>
-  );
+  useEffect(() => {
+    navigation.setOptions({
+      title: categoryData?.title,
+    });
+  }, []);
+
+  return <MealList dataList={displayedMeals} navigation={navigation} />;
 };
 
 CategoryMealsScreen.navigationOptions = (navigationData) => {

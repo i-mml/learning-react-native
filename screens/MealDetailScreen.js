@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import CustomHeaderButton from "../components/HeaderButton";
@@ -8,6 +8,12 @@ const MealDetailScreen = ({ route, navigation }) => {
   const { mealId } = route.params;
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: selectedMeal?.title,
+    });
+  }, []);
 
   return (
     <View style={styles.screen}>

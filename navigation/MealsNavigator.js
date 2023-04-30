@@ -145,7 +145,7 @@ const CateggoriesNavigator = () => {
 const FavoritesNavigator = () => {
   return (
     <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
-      <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
+      <Stack.Screen name="Favorites" component={FavoritesScreen} />
     </Stack.Navigator>
   );
 };
@@ -163,13 +163,10 @@ export default function MealsFavTabNavigator() {
         <Tab.Screen
           name="CategoriesNested"
           component={CateggoriesNavigator}
-          options={{
-            headerShown: false,
-            tabBarIcon: "menu",
-          }}
+          options={{ ...tabScreenConfigs, tabBarIcon: "menu" }}
         />
         <Tab.Screen
-          name="Favorites"
+          name="FavoritesNested"
           component={FavoritesNavigator}
           options={{ ...tabScreenConfigs, tabBarIcon: "bookmark-outline" }}
         />
