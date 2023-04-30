@@ -146,6 +146,7 @@ const FavoritesNavigator = () => {
   return (
     <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
       <Stack.Screen name="Favorites" component={FavoritesScreen} />
+      <Stack.Screen name="MealDetail" component={MealDetailScreen} />
     </Stack.Navigator>
   );
 };
