@@ -18,9 +18,25 @@ const Tab =
     ? createMaterialBottomTabNavigator()
     : createBottomTabNavigator();
 
+const defaultStackNavigatorOptions = {
+  headerStyle: {
+    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "white",
+  },
+  headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
+};
+
+const tabScreenConfigs = {
+  headerStyle: {
+    backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "white",
+  },
+
+  headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
+};
+
 const MyTabBar = ({ state, descriptors, navigation }) => {
   return (
     <View
+      // these styles are for createBottomTabNavigator , not for material bottom navigator
       style={{
         width: "100%",
         position: "absolute",
@@ -116,21 +132,20 @@ const MyTabBar = ({ state, descriptors, navigation }) => {
   );
 };
 
-const MealsNavigator2 = () => {
+const CateggoriesNavigator = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor:
-            Platform.OS === "android" ? Colors.primaryColor : "white",
-        },
-        headerTintColor:
-          Platform.OS === "android" ? "white" : Colors.primaryColor,
-      }}
-    >
+    <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
       <Stack.Screen name="Categories" component={CategoriesScreen} />
       <Stack.Screen name="CategoryMeals" component={CategoryMealsScreen} />
       <Stack.Screen name="MealDetail" component={MealDetailScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const FavoritesNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
+      <Stack.Screen name="FavoritesScreen" component={FavoritesScreen} />
     </Stack.Navigator>
   );
 };
@@ -141,12 +156,13 @@ export default function MealsFavTabNavigator() {
       <Tab.Navigator
         tabBar={(props) => <MyTabBar {...props} />}
         shifting
-        activeColor={Colors.accentColor}
+        activeColor={"#fff"}
         inactiveColor="#999"
+        barStyle={{ backgroundColor: Colors?.accentColor }}
       >
         <Tab.Screen
           name="CategoriesNested"
-          component={MealsNavigator2}
+          component={CateggoriesNavigator}
           options={{
             headerShown: false,
             tabBarIcon: "menu",
@@ -154,17 +170,8 @@ export default function MealsFavTabNavigator() {
         />
         <Tab.Screen
           name="Favorites"
-          component={FavoritesScreen}
-          options={{
-            headerStyle: {
-              backgroundColor:
-                Platform.OS === "android" ? Colors.primaryColor : "white",
-            },
-
-            headerTintColor:
-              Platform.OS === "android" ? "white" : Colors.primaryColor,
-            tabBarIcon: "bookmark-outline",
-          }}
+          component={FavoritesNavigator}
+          options={{ ...tabScreenConfigs, tabBarIcon: "bookmark-outline" }}
         />
       </Tab.Navigator>
     </NavigationContainer>
