@@ -1,8 +1,24 @@
 import React, { useEffect } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { MEALS } from "../data/dummy-data";
 import CustomHeaderButton from "../components/HeaderButton";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import DefaultText from "../components/DefaultText";
+
+const ListItem = (props) => {
+  return (
+    <View style={styles.listItem}>
+      <DefaultText>{props?.children}</DefaultText>
+    </View>
+  );
+};
 
 const MealDetailScreen = ({ route, navigation }) => {
   const { mealId } = route.params;
@@ -27,17 +43,26 @@ const MealDetailScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.screen}>
-      <Text>{selectedMeal?.title}</Text>
-      <Button title="Go Back" onPress={() => navigation.goBack()} />
-      {/* navigation.popToTop is used to go to top of navigation (just in stack navigation) */}
-      <Button
-        title="Go To Categories"
-        onPress={() => {
-          navigation.popToTop();
-        }}
-      />
-    </View>
+    <ScrollView>
+      <Image source={{ uri: selectedMeal?.imageUrl }} style={styles.image} />
+
+      <View style={styles.details}>
+        <DefaultText>{selectedMeal.duration}m</DefaultText>
+        <DefaultText>{selectedMeal.complexity?.toUpperCase()}</DefaultText>
+        <DefaultText>{selectedMeal.affordablitiy?.toUpperCase()}</DefaultText>
+      </View>
+
+      <Text style={styles?.title}>Ingredients</Text>
+
+      {selectedMeal?.ingredients?.map((ingredient) => (
+        <ListItem key={ingredient}>{ingredient}</ListItem>
+      ))}
+
+      <Text style={styles?.title}>Steps</Text>
+      {selectedMeal?.steps?.map((step) => (
+        <ListItem key={step}>{step}</ListItem>
+      ))}
+    </ScrollView>
   );
 };
 
@@ -64,6 +89,27 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  title: {
+    fontFamily: "iran-sans-bold",
+    fontSize: 22,
+    textAlign: "center",
+  },
+  image: {
+    width: "100%",
+    height: 200,
+  },
+  details: {
+    flexDirection: "row",
+    padding: 15,
+    justifyContent: "space-around",
+  },
+  listItem: {
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    padding: 9,
   },
 });
 export default MealDetailScreen;
