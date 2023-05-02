@@ -5,6 +5,8 @@ import { useState } from "react";
 import { enableScreens } from "react-native-screens";
 import "react-native-gesture-handler";
 import MainNavigator from "./navigation/MealsNavigator";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 // for improve performance in navigations
 enableScreens();
@@ -28,7 +30,11 @@ export default function App() {
       />
     );
   }
-  return <MainNavigator />;
+  return (
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
+  );
 }
 
 const styles = StyleSheet.create({
