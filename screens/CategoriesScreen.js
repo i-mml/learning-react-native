@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import { CATEGORIES } from "../data/dummy-data";
-import { TouchableOpacity } from "react-native";
-import Colors from "../constants/Colors";
-import { Platform } from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import CustomHeaderButton from "../components/HeaderButton";
 
 const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {
@@ -21,6 +20,22 @@ const CategoriesScreen = (props) => {
       />
     );
   };
+
+  useEffect(() => {
+    props?.navigation.setOptions({
+      headerLeft: () => {
+        return (
+          <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+            <Item
+              title="Favorite"
+              iconName="menu"
+              onPress={() => props.navigation.toggleDrawer()}
+            />
+          </HeaderButtons>
+        );
+      },
+    });
+  }, []);
 
   return (
     <FlatList

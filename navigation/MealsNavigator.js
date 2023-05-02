@@ -218,9 +218,13 @@ export default function MainNavigator() {
         <Drawer.Screen
           name="MealsTabs"
           component={MealsFavTabNavigator}
-          options={{ headerShown: false }}
+          options={{ ...defaultStackNavigatorOptions, headerShown: false }}
         />
-        <Drawer.Screen name="Sample" component={SampleScreen} />
+        <Drawer.Screen
+          name="Filters"
+          component={FiltersScreen}
+          options={{ ...defaultStackNavigatorOptions }}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
