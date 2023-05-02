@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { useState } from "react";
 import { enableScreens } from "react-native-screens";
-import MealsNavigator from "./navigation/MealsNavigator";
+import "react-native-gesture-handler";
+import MainNavigator from "./navigation/MealsNavigator";
 
 // for improve performance in navigations
 enableScreens();
@@ -27,7 +28,7 @@ export default function App() {
       />
     );
   }
-  return <MealsNavigator />;
+  return <MainNavigator />;
 }
 
 const styles = StyleSheet.create({

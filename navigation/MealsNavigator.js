@@ -11,7 +11,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import FiltersScreen from "../screens/FiltersScreen";
+import SampleScreen from "../screens/SampleScreen";
 
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -156,47 +160,68 @@ const FavoritesNavigator = () => {
   );
 };
 
-export default function MealsFavTabNavigator() {
+const FiltersNavigator = () => {
+  return (
+    <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
+      <Stack.Screen name="FiltersNested" component={FiltersScreen} />
+    </Stack.Navigator>
+  );
+};
+
+function MealsFavTabNavigator() {
+  return (
+    <Tab.Navigator
+      tabBar={(props) => <MyTabBar {...props} />}
+      shifting
+      activeColor={"#fff"}
+      inactiveColor="#999"
+      barStyle={{ backgroundColor: Colors?.accentColor }}
+    >
+      <Tab.Screen
+        name="CategoriesNested"
+        component={CateggoriesNavigator}
+        options={{
+          ...tabScreenConfigs,
+          tabBarIcon: "menu",
+          headerShown: false,
+          tabBarLabel:
+            Platform?.OS === "android" ? (
+              <Text style={{ fontFamily: "iran-sans-bold" }}>Categories</Text>
+            ) : (
+              "Categories"
+            ),
+        }}
+      />
+      <Tab.Screen
+        name="FavoritesNested"
+        component={FavoritesNavigator}
+        options={{
+          ...tabScreenConfigs,
+          tabBarIcon: "bookmark-outline",
+          headerShown: false,
+          tabBarLabel:
+            Platform?.OS === "android" ? (
+              <Text style={{ fontFamily: "iran-sans-bold" }}>Favorites</Text>
+            ) : (
+              "Favorites"
+            ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        tabBar={(props) => <MyTabBar {...props} />}
-        shifting
-        activeColor={"#fff"}
-        inactiveColor="#999"
-        barStyle={{ backgroundColor: Colors?.accentColor }}
-      >
-        <Tab.Screen
-          name="CategoriesNested"
-          component={CateggoriesNavigator}
-          options={{
-            ...tabScreenConfigs,
-            tabBarIcon: "menu",
-            headerShown: false,
-            tabBarLabel:
-              Platform?.OS === "android" ? (
-                <Text style={{ fontFamily: "iran-sans-bold" }}>Categories</Text>
-              ) : (
-                "Categories"
-              ),
-          }}
+      <Drawer.Navigator initialRouteName="Filters">
+        <Drawer.Screen
+          name="MealsTabs"
+          component={MealsFavTabNavigator}
+          options={{ headerShown: false }}
         />
-        <Tab.Screen
-          name="FavoritesNested"
-          component={FavoritesNavigator}
-          options={{
-            ...tabScreenConfigs,
-            tabBarIcon: "bookmark-outline",
-            headerShown: false,
-            tabBarLabel:
-              Platform?.OS === "android" ? (
-                <Text style={{ fontFamily: "iran-sans-bold" }}>Favorites</Text>
-              ) : (
-                "Favorites"
-              ),
-          }}
-        />
-      </Tab.Navigator>
+        <Drawer.Screen name="Sample" component={SampleScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
