@@ -11,6 +11,8 @@ import { MEALS } from "../data/dummy-data";
 import CustomHeaderButton from "../components/HeaderButton";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import DefaultText from "../components/DefaultText";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorite, removeOfFavorite } from "../redux/actions";
 
 const ListItem = (props) => {
   return (
@@ -23,7 +25,25 @@ const ListItem = (props) => {
 const MealDetailScreen = ({ route, navigation }) => {
   const { mealId } = route.params;
 
+  const dispatch = useDispatch();
+  const reducerMeal = useSelector((state) => state?.meals);
+  const favoriteMeals = useSelector((state) => state?.meals?.favoriteMeals);
+
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
+  console.log(
+    "checker",
+    reducerMeal?.favoriteMeals?.filter((item) => item?.id !== selectedMeal?.id)
+  );
+
+  const handleFavoriteToggle = () => {
+    //  this condition means the selectedMeal doesn't exist in favorite meals
+    if (favoriteMeals?.includes(selectedMeal)) {
+      dispatch(removeOfFavorite(selectedMeal?.id));
+    } else {
+      dispatch(addToFavorite(selectedMeal));
+    }
+  };
 
   useEffect(() => {
     navigation.setOptions({
@@ -34,7 +54,7 @@ const MealDetailScreen = ({ route, navigation }) => {
             <Item
               title="Favorite"
               iconName="ios-star"
-              onPress={() => console.log("mark as Favorite")}
+              onPress={handleFavoriteToggle}
             />
           </HeaderButtons>
         );

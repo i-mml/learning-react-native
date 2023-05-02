@@ -214,7 +214,7 @@ function MealsFavTabNavigator() {
 export default function MainNavigator() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Filters">
+      <Drawer.Navigator initialRouteName="MealsTabs">
         <Drawer.Screen
           name="MealsTabs"
           component={MealsFavTabNavigator}
