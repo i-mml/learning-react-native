@@ -1,4 +1,5 @@
 import { MEALS } from "../../data/dummy-data";
+import { ADD_TO_FAVORITE, REMOVE_OF_FAVORITE } from "../actions";
 
 const initialState = {
   meals: MEALS,
@@ -8,12 +9,12 @@ const initialState = {
 
 const mealsReudcer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_TO_FAVORITE":
+    case ADD_TO_FAVORITE:
       return {
         ...state,
         favoriteMeals: [...state?.favoriteMeals, action?.payload],
       };
-    case "REMOVE_OF_FAVORITE":
+    case REMOVE_OF_FAVORITE:
       return {
         ...state,
         favoriteMeals: state?.favoriteMeals?.filter(
