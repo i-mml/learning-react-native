@@ -4,7 +4,7 @@ import { FlatList } from "react-native";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
 
-const ProductsOverviewScreen = () => {
+const ProductsOverviewsScreen = () => {
   const productsList = useSelector(
     (state) => state?.products?.availableProducts
   );
@@ -20,4 +20,4 @@ const ProductsOverviewScreen = () => {
   );
 };
 
-export default ProductsOverviewScreen;
+export default ProductsOverviewsScreen;
