@@ -31,10 +31,7 @@ const MealDetailScreen = ({ route, navigation }) => {
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
 
-  console.log(
-    "checker",
-    reducerMeal?.favoriteMeals?.filter((item) => item?.id !== selectedMeal?.id)
-  );
+  console.log("checker", reducerMeal?.favoriteMeals?.includes(selectedMeal));
 
   const handleFavoriteToggle = () => {
     //  this condition means the selectedMeal doesn't exist in favorite meals
@@ -53,14 +50,18 @@ const MealDetailScreen = ({ route, navigation }) => {
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
             <Item
               title="Favorite"
-              iconName="ios-star"
+              iconName={
+                favoriteMeals?.includes(selectedMeal)
+                  ? "ios-star"
+                  : "star-outline"
+              }
               onPress={handleFavoriteToggle}
             />
           </HeaderButtons>
         );
       },
     });
-  }, []);
+  }, [favoriteMeals?.includes(selectedMeal)]);
 
   return (
     <ScrollView>
