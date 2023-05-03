@@ -26,12 +26,9 @@ const MealDetailScreen = ({ route, navigation }) => {
   const { mealId } = route.params;
 
   const dispatch = useDispatch();
-  const reducerMeal = useSelector((state) => state?.meals);
+  const availableMeals = useSelector((state) => state?.meals?.meals);
   const favoriteMeals = useSelector((state) => state?.meals?.favoriteMeals);
-
-  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
-
-  console.log("checker", reducerMeal?.favoriteMeals?.includes(selectedMeal));
+  const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
 
   const handleFavoriteToggle = () => {
     //  this condition means the selectedMeal doesn't exist in favorite meals
