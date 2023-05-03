@@ -197,7 +197,7 @@ function MealsFavTabNavigator() {
         component={FavoritesNavigator}
         options={{
           ...tabScreenConfigs,
-          tabBarIcon: "bookmark-outline",
+          tabBarIcon: "bookmarks-outline",
           headerShown: false,
           tabBarLabel:
             Platform?.OS === "android" ? (

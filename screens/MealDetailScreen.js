@@ -48,8 +48,8 @@ const MealDetailScreen = ({ route, navigation }) => {
               title="Favorite"
               iconName={
                 favoriteMeals?.includes(selectedMeal)
-                  ? "ios-star"
-                  : "star-outline"
+                  ? "bookmark"
+                  : "bookmark-outline"
               }
               onPress={handleFavoriteToggle}
             />
