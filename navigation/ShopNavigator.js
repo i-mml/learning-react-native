@@ -14,11 +14,11 @@ const defaultStackNavigatorOptions = {
   },
   headerTitleStyle: {
     fontSize: 25,
-    fontFamily: "iran-sans-bold",
+    // fontFamily: "iran-sans-bold",
   },
   // fot the IOS back title
   headerBackTitleStyle: {
-    fontFamily: "iran-sans",
+    // fontFamily: "iran-sans",
   },
   headerTintColor: Platform?.OS === "android" ? "white" : Colors.primary,
 };

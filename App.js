@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import ProductsOverviewsScreen from "./screens/shop/ProductsOverViewsScreen";
 import ShopNavigator from "./navigation/ShopNavigator";
 
 export default function App() {
