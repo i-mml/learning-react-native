@@ -14,6 +14,7 @@ const MealList = ({ dataList, navigation }) => {
         onSelectMeal={() =>
           navigation.navigate("MealDetail", {
             mealId: itemData.item?.id,
+            mealTitle: itemData.item?.title,
           })
         }
       />

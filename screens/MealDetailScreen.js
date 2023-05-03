@@ -23,7 +23,7 @@ const ListItem = (props) => {
 };
 
 const MealDetailScreen = ({ route, navigation }) => {
-  const { mealId } = route.params;
+  const { mealId, mealTitle } = route.params;
 
   const dispatch = useDispatch();
   const availableMeals = useSelector((state) => state?.meals?.meals);
@@ -41,7 +41,7 @@ const MealDetailScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     navigation.setOptions({
-      title: selectedMeal?.title,
+      title: mealTitle,
       headerRight: () => {
         return (
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
