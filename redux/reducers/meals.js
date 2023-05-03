@@ -12,13 +12,13 @@ const mealsReudcer = (state = initialState, action) => {
     case ADD_TO_FAVORITE:
       return {
         ...state,
-        favoriteMeals: [...state?.favoriteMeals, action?.payload],
+        favoriteMeals: [...state?.favoriteMeals, action?.mealObject],
       };
     case REMOVE_OF_FAVORITE:
       return {
         ...state,
         favoriteMeals: state?.favoriteMeals?.filter(
-          (item) => item?.id !== action?.payload
+          (item) => item?.id !== action?.mealId
         ),
       };
     default:
