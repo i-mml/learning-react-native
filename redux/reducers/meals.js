@@ -13,19 +13,18 @@ const mealsReudcer = (state = initialState, action) => {
       const existingIndex = state?.favoriteMeals?.findIndex(
         (meal) => meal?.id === action?.mealObject?.id
       );
-      console.log("existingIndex", existingIndex);
 
       if (existingIndex >= 0) {
+        const updatedFavMeals = [...state?.favoriteMeals];
+        updatedFavMeals?.splice(existingIndex, 1);
         return {
           ...state,
-          favoriteMeals: state?.favoriteMeals?.filter(
-            (item) => item?.id !== action?.mealObject?.id
-          ),
+          favoriteMeals: updatedFavMeals,
         };
       } else {
         return {
           ...state,
-          favoriteMeals: [...state?.favoriteMeals, action?.mealObject],
+          favoriteMeals: state?.favoriteMeals?.concat(action?.mealObject),
         };
       }
     default:
