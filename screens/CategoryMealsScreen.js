@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { CATEGORIES } from "../data/dummy-data";
 import Colors from "../constants/Colors";
-import { Platform } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
 import MealList from "../components/MealList";
 import { useSelector } from "react-redux";
+import DefaultText from "../components/DefaultText";
 
 const CategoryMealsScreen = ({ route, navigation }) => {
   const { catId } = route.params;
@@ -21,8 +22,29 @@ const CategoryMealsScreen = ({ route, navigation }) => {
     });
   }, []);
 
+  if (displayedMeals?.length === 0 || !displayedMeals) {
+    return (
+      <View style={styles.notFound}>
+        <DefaultText styles={styles.notFoundText}>
+          No Meals found , maybe check oyout filters?
+        </DefaultText>
+      </View>
+    );
+  }
   return <MealList dataList={displayedMeals} navigation={navigation} />;
 };
+
+const styles = StyleSheet.create({
+  notFound: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
+  },
+  notFoundText: {
+    textAlign: "center",
+    fontSize: 18,
+  },
+});
 
 CategoryMealsScreen.navigationOptions = (navigationData) => {
   const catId = navigationData?.navigation?.getState("categoryId");
