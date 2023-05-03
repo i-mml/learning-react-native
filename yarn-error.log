@@ -1,0 +1,48 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\moham\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add redux react-redux react-navigation react-navigation-header-buttons
+
+PATH: 
+  C:\Users\moham\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\moham\bin;C:\Program Files\Microsoft\jdk-11.0.18.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\Go\bin;C:\Program Files\PuTTY;C:\Program Files\nodejs;C:\Program Files\MongoDB\Server\6.0\bin;C:\mongosh-1.6.2\bin;C:\Program Files\dotnet;C:\Users\moham\AppData\Local\Microsoft\WindowsApps;C:\Users\moham\go\bin;C:\Users\moham\AppData\Roaming\npm;C:\Users\moham\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.18.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile 'C:\Users\moham\AppData\Local\Yarn\Cache\v6\npm-ms-2.1.2-d09d1f357b443f493382a8eb3ccd183872ae6009-integrity\node_modules\ms\index.js' -> 'E:\myfile\practice\react-native\rn-learning-app\node_modules\@babel\core\node_modules\ms\index.js'
+
+npm manifest: 
+  {
+    "name": "rn-learning-app",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web"
+    },
+    "dependencies": {
+      "expo": "~48.0.4",
+      "expo-status-bar": "~1.4.4",
+      "react": "18.2.0",
+      "react-native": "0.71.3",
+      "react-native-gesture-handler": "~2.9.0",
+      "react-native-reanimated": "~2.14.4"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.20.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
