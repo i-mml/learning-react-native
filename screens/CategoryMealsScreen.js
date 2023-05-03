@@ -10,7 +10,6 @@ const CategoryMealsScreen = ({ route, navigation }) => {
   const categoryData = CATEGORIES?.find((cat) => cat?.id === catId);
 
   const availableMeals = useSelector((state) => state?.meals?.filteredMeals);
-  console.log("availableMeals", availableMeals);
 
   const displayedMeals = availableMeals.filter(
     (meal) => meal.categoryIds?.indexOf(catId) >= 0
