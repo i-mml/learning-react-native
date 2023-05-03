@@ -2,9 +2,9 @@
 
 import Colors from "../constants/Colors";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ProductsOverviewsScreen from "../screens/shop/ProductsOverViewsScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { Platform } from "react-native";
+import PrOverviewScreen from "../screens/shop/PrOverviewScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -136,7 +136,7 @@ export default function ShopNavigator() {
       <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
         <Stack.Screen
           name="ProductsOverView"
-          component={ProductsOverviewsScreen}
+          component={PrOverviewScreen}
           options={{
             headerTitle: "All Products",
           }}
