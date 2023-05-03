@@ -1,13 +1,23 @@
 import React from "react";
+import { Text } from "react-native";
 import { FlatList } from "react-native";
 import { View } from "react-native";
+import { useSelector } from "react-redux";
 
-const productsOverviewScreen = () => {
+const ProductsOverviewScreen = () => {
+  const productsList = useSelector(
+    (state) => state?.products?.availableProducts
+  );
+
   return (
     <View>
-      <FlatList data={[]} />
+      <FlatList
+        data={productsList}
+        renderItem={(itemData) => <Text>{itemData?.item?.title}</Text>}
+        keyExtractor={(item) => item?.id}
+      />
     </View>
   );
 };
 
-export default productsOverviewScreen;
+export default ProductsOverviewScreen;
