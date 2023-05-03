@@ -12,7 +12,11 @@ import CustomHeaderButton from "../components/HeaderButton";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import DefaultText from "../components/DefaultText";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavorite, removeOfFavorite } from "../redux/actions";
+import {
+  addToFavorite,
+  removeOfFavorite,
+  toggleFavorite,
+} from "../redux/actions";
 
 const ListItem = (props) => {
   return (
@@ -31,12 +35,7 @@ const MealDetailScreen = ({ route, navigation }) => {
   const selectedMeal = availableMeals.find((meal) => meal.id === mealId);
 
   const handleFavoriteToggle = () => {
-    //  this condition means the selectedMeal doesn't exist in favorite meals
-    if (favoriteMeals?.includes(selectedMeal)) {
-      dispatch(removeOfFavorite(selectedMeal?.id));
-    } else {
-      dispatch(addToFavorite(selectedMeal));
-    }
+    dispatch(toggleFavorite(selectedMeal));
   };
 
   useEffect(() => {
