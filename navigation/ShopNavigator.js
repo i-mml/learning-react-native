@@ -137,6 +137,9 @@ export default function ShopNavigator() {
         <Stack.Screen
           name="ProductsOverView"
           component={ProductsOverviewsScreen}
+          options={{
+            headerTitle: "All Products",
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
