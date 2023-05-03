@@ -1,9 +1,5 @@
 import { MEALS } from "../../data/dummy-data";
-import {
-  ADD_TO_FAVORITE,
-  REMOVE_OF_FAVORITE,
-  TOGGLE_FAVORITE,
-} from "../actions";
+import { TOGGLE_FAVORITE } from "../actions";
 
 const initialState = {
   meals: MEALS,
