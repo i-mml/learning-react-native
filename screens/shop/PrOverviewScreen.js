@@ -4,7 +4,7 @@ import { View } from "react-native";
 import { useSelector } from "react-redux";
 import ProductItem from "../../components/shop/ProductItem";
 
-const PrOverviewScreen = () => {
+const PrOverviewScreen = ({ navigation }) => {
   const productsList = useSelector(
     (state) => state?.products?.availableProducts
   );
@@ -16,13 +16,14 @@ const PrOverviewScreen = () => {
         renderItem={(itemData) => (
           <ProductItem
             itemData={itemData}
-            onViewDetail={() => {
-              console.log("onViewDetail");
-              alert("onViewDetail");
-            }}
+            onViewDetail={() =>
+              navigation?.navigate("ProductsDetail", {
+                productId: itemData?.item?.id,
+                productTitle: itemData?.item?.title,
+              })
+            }
             onAddToCart={() => {
               console.log("onAddToCart");
-              alert("onAddToCart");
             }}
           />
         )}

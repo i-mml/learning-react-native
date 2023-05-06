@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { Platform } from "react-native";
 import PrOverviewScreen from "../screens/shop/PrOverviewScreen";
+import ProductDetailScreen from "../screens/shop/productDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -141,6 +142,7 @@ export default function ShopNavigator() {
             headerTitle: "All Products",
           }}
         />
+        <Stack.Screen name="ProductsDetail" component={ProductDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
