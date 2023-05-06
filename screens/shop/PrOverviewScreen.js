@@ -13,7 +13,19 @@ const PrOverviewScreen = () => {
     <View>
       <FlatList
         data={productsList}
-        renderItem={(itemData) => <ProductItem itemData={itemData} />}
+        renderItem={(itemData) => (
+          <ProductItem
+            itemData={itemData}
+            onViewDetail={() => {
+              console.log("onViewDetail");
+              alert("onViewDetail");
+            }}
+            onAddToCart={() => {
+              console.log("onAddToCart");
+              alert("onAddToCart");
+            }}
+          />
+        )}
         keyExtractor={(item) => item?.id}
       />
     </View>
