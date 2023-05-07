@@ -19,13 +19,12 @@ const ProductDetailScreen = ({ route, navigation }) => {
     )
   );
   const dispatch = useDispatch();
-  const cartReducer = useSelector((state) => state?.cart?.items);
+  const cartReducer = useSelector((state) => state?.cart);
   console.log(cartReducer);
 
   useEffect(() => {
     navigation.setOptions({ title: productData?.productTitle });
   }, []);
-  console.log(addToCart);
 
   return (
     <ScrollView>
