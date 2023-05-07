@@ -54,6 +54,7 @@ const s = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
     marginHorizontal: 20,
+    fontFamily: "iran-sans",
   },
   actions: {
     marginVertical: 10,

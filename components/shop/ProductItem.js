@@ -84,7 +84,7 @@ const s = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "iran-sans-bold",
   },
   price: {
     fontSize: 14,
