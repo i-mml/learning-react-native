@@ -7,7 +7,9 @@ import { Platform } from "react-native";
 import PrOverviewScreen from "../screens/shop/PrOverviewScreen";
 import ProductDetailScreen from "../screens/shop/productDetailScreen";
 import CartScreen from "../screens/shop/CartScreen";
+import OrdersScreen from "../screens/shop/OrdersScreen";
 
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 const defaultStackNavigatorOptions = {
@@ -199,21 +201,21 @@ export default function ShopNavigator() {
 //   );
 // }
 
-// export default function MainNavigator() {
-//   return (
-//     <NavigationContainer>
-//       <Drawer.Navigator initialRouteName="MealsTabs">
-//         <Drawer.Screen
-//           name="MealsTabs"
-//           component={MealsFavTabNavigator}
-//           options={{ ...defaultStackNavigatorOptions, headerShown: false }}
-//         />
-//         <Drawer.Screen
-//           name="Filters"
-//           component={FiltersScreen}
-//           options={{ ...defaultStackNavigatorOptions }}
-//         />
-//       </Drawer.Navigator>
-//     </NavigationContainer>
-//   );
-// }
+export default function MainNavigator() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="ShopNavigator">
+        <Drawer.Screen
+          name="ShopNavigator"
+          component={ShopNavigator}
+          options={{ ...defaultStackNavigatorOptions, headerShown: false }}
+        />
+        <Drawer.Screen
+          name="Orders"
+          component={OrdersScreen}
+          options={{ ...defaultStackNavigatorOptions }}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
