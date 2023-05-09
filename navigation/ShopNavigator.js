@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Platform } from "react-native";
 import PrOverviewScreen from "../screens/shop/PrOverviewScreen";
 import ProductDetailScreen from "../screens/shop/productDetailScreen";
+import CartScreen from "../screens/shop/CartScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -143,6 +144,13 @@ export default function ShopNavigator() {
           }}
         />
         <Stack.Screen name="ProductsDetail" component={ProductDetailScreen} />
+        <Stack.Screen
+          name="CartScreen"
+          component={CartScreen}
+          options={{
+            headerTitle: "Cart",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
