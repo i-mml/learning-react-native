@@ -18,7 +18,9 @@ const CartItem = ({ cartItemData, onRemove }) => {
           style={s.image}
         />
         <Text style={s.quantity}>{cartItemData?.quantity} </Text>
-        <Text style={s.mainText}>{cartItemData?.productTitle}</Text>
+        <Text style={s.title} numberOfLines={1}>
+          {cartItemData?.productTitle}
+        </Text>
       </View>
       <View style={s.itemData}>
         <Text style={s.mainText}>${cartItemData?.productPrice.toFixed(2)}</Text>
@@ -56,6 +58,11 @@ const s = StyleSheet.create({
   mainText: {
     fontFamily: "iran-sans-bold",
     fontSize: 16,
+  },
+  title: {
+    fontFamily: "iran-sans-bold",
+    fontSize: 16,
+    maxWidth: "54%",
   },
   deleteButton: {
     marginLeft: 20,
