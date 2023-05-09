@@ -7,6 +7,7 @@ import { enableScreens } from "react-native-screens";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { useCallback } from "react";
+import "react-native-gesture-handler";
 
 // for improve performance in navigations
 enableScreens();

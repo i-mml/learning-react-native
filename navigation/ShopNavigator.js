@@ -8,6 +8,7 @@ import PrOverviewScreen from "../screens/shop/PrOverviewScreen";
 import ProductDetailScreen from "../screens/shop/productDetailScreen";
 import CartScreen from "../screens/shop/CartScreen";
 import OrdersScreen from "../screens/shop/OrdersScreen";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -134,27 +135,25 @@ const defaultStackNavigatorOptions = {
 //   );
 // };
 
-export default function ShopNavigator() {
+function ShopNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
-        <Stack.Screen
-          name="ProductsOverView"
-          component={PrOverviewScreen}
-          options={{
-            headerTitle: "All Products",
-          }}
-        />
-        <Stack.Screen name="ProductsDetail" component={ProductDetailScreen} />
-        <Stack.Screen
-          name="CartScreen"
-          component={CartScreen}
-          options={{
-            headerTitle: "Cart",
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
+      <Stack.Screen
+        name="ProductsOverView"
+        component={PrOverviewScreen}
+        options={{
+          headerTitle: "All Products",
+        }}
+      />
+      <Stack.Screen name="ProductsDetail" component={ProductDetailScreen} />
+      <Stack.Screen
+        name="CartScreen"
+        component={CartScreen}
+        options={{
+          headerTitle: "Cart",
+        }}
+      />
+    </Stack.Navigator>
   );
 }
 
@@ -206,7 +205,7 @@ export default function MainNavigator() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="ShopNavigator">
         <Drawer.Screen
-          name="ShopNavigator"
+          name="Shop"
           component={ShopNavigator}
           options={{ ...defaultStackNavigatorOptions, headerShown: false }}
         />
