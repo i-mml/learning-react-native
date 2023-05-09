@@ -17,12 +17,15 @@ const CartScreen = () => {
         productPrice: state?.cart?.items[key]?.productPrice,
         quantity: state?.cart?.items[key]?.quantity,
         sum: state?.cart?.items[key]?.sum,
+        productImage: state?.cart?.items[key]?.productImage,
       });
     }
     return transformedCartItems;
   });
 
   const dispatch = useDispatch();
+
+  console.log(cartItems);
 
   return (
     <View style={s.screen}>
