@@ -7,7 +7,7 @@ import { Text } from "react-native";
 import { StyleSheet } from "react-native";
 import { View } from "react-native";
 
-const CartItem = ({ cartItemData, onRemove }) => {
+const CartItem = ({ cartItemData, onRemove, deletable = true }) => {
   return (
     <View style={s.cartItem}>
       <View style={s.itemData}>
@@ -24,13 +24,15 @@ const CartItem = ({ cartItemData, onRemove }) => {
       </View>
       <View style={s.itemData}>
         <Text style={s.mainText}>${cartItemData?.productPrice.toFixed(2)}</Text>
-        <TouchableOpacity onPress={onRemove} style={s.deleteButton}>
-          <Ionicons
-            name={Platform.OS === "android" ? "md-trash" : "ios-trash"}
-            size={23}
-            color="red"
-          />
-        </TouchableOpacity>
+        {deletable && (
+          <TouchableOpacity onPress={onRemove} style={s.deleteButton}>
+            <Ionicons
+              name={Platform.OS === "android" ? "md-trash" : "ios-trash"}
+              size={23}
+              color="red"
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );

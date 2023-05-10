@@ -3,9 +3,12 @@ import { Button, StyleSheet, Text } from "react-native";
 import { View } from "react-native";
 
 import Colors from "../../constants/Colors";
+import { useState } from "react";
+import CartItem from "./CartItem";
 
 const OrderItem = (props) => {
-  console.log(props);
+  const [showDetails, setShowDetails] = useState(false);
+  console.log("props?.items", props?.items);
 
   return (
     <View style={s.orderItem}>
@@ -14,7 +17,23 @@ const OrderItem = (props) => {
         <Text style={s.date}>{props?.date}</Text>
       </View>
 
-      <Button color={Colors.primary} title="Show Details" />
+      <Button
+        color={Colors.primary}
+        title={!showDetails ? "Show Details" : "Hide Details"}
+        onPress={() => setShowDetails((prevState) => !prevState)}
+      />
+      {showDetails && (
+        <View style={s.detailItems}>
+          {props?.items?.map((cartItem) => (
+            <CartItem
+              key={cartItem?.productId}
+              cartItemData={cartItem}
+              onRemove={() => {}}
+              deletable={false}
+            />
+          ))}
+        </View>
+      )}
     </View>
   );
 };
@@ -47,6 +66,9 @@ const s = StyleSheet.create({
     fontSize: 16,
     fontFamily: "iran-sans",
     color: "#888",
+  },
+  detailItems: {
+    width: "100%",
   },
 });
 

@@ -9,14 +9,16 @@ import OrderItem from "../../components/shop/OrderItem";
 const OrdersScreen = () => {
   const orders = useSelector((state) => state?.orders);
 
-  console.log("orders", orders);
-
   return (
     <View>
       <FlatList
         data={orders}
         renderItem={({ item }) => (
-          <OrderItem amount={item?.totalAmount} date={item?.readableDate} />
+          <OrderItem
+            amount={item?.totalAmount}
+            date={item?.readableDate}
+            items={item?.items}
+          />
         )}
       />
     </View>
