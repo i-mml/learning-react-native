@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 const OrdersScreen = () => {
   const orders = useSelector((state) => state?.orders);
 
+  console.log("orders", orders);
+
   return (
     <View>
       <FlatList

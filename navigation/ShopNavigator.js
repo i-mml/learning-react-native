@@ -9,6 +9,7 @@ import ProductDetailScreen from "../screens/shop/productDetailScreen";
 import CartScreen from "../screens/shop/CartScreen";
 import OrdersScreen from "../screens/shop/OrdersScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Ionicons } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -207,12 +208,31 @@ export default function MainNavigator() {
         <Drawer.Screen
           name="Shop"
           component={ShopNavigator}
-          options={{ ...defaultStackNavigatorOptions, headerShown: false }}
+          options={{
+            ...defaultStackNavigatorOptions,
+            headerShown: false,
+            drawerIcon: (drawerData) => (
+              <Ionicons
+                name={Platform.OS === "android" ? "md-cart" : "ios-cart"}
+                size={23}
+                color={drawerData?.tintColor}
+              />
+            ),
+          }}
         />
         <Drawer.Screen
           name="Orders"
           component={OrdersScreen}
-          options={{ ...defaultStackNavigatorOptions }}
+          options={{
+            ...defaultStackNavigatorOptions,
+            drawerIcon: (drawerData) => (
+              <Ionicons
+                name={Platform.OS === "android" ? "md-list" : "ios-list"}
+                size={23}
+                color={drawerData?.tintColor}
+              />
+            ),
+          }}
         />
       </Drawer.Navigator>
     </NavigationContainer>
