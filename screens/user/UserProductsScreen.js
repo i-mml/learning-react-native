@@ -22,6 +22,15 @@ const UserProductsScreen = ({ navigation }) => {
 
   useEffect(() => {
     navigation.setOptions({
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+          <Item
+            title="Cart"
+            iconName={Platform.OS === "android" ? "md-create" : "ios-create"}
+            onPress={() => navigation?.navigate("editProductScreen")}
+          />
+        </HeaderButtons>
+      ),
       headerLeft: () => (
         <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
           <Item
@@ -42,7 +51,11 @@ const UserProductsScreen = ({ navigation }) => {
           itemData={itemData}
           onViewDetail={() => onViewDetail(itemData?.item?.id)}
         >
-          <Button color={Colors.primary} title="Edit" onPress={onViewDetail} />
+          <Button
+            color={Colors.primary}
+            title="Edit"
+            onPress={() => onViewDetail(itemData?.item?.id)}
+          />
           <Button
             color={Colors.primary}
             title="Delete"
