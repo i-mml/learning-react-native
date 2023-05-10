@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import CustomHeaderButton from "../../components/UI/HeaderButton";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
@@ -26,17 +26,21 @@ const EditProductScreen = ({ navigation, route }) => {
     editedProduct ? editedProduct?.description?.toString() : ""
   );
 
+  const submitHandler = useCallback(() => {
+    console.log("Submitting!");
+  }, []);
+
   useEffect(() => {
     navigation.setOptions({
-      // headerRight: () => (
-      //   <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-      //     <Item
-      //       title="Cart"
-      //       iconName={Platform.OS === "android" ? "md-create" : "ios-create"}
-      //       onPress={() => navigation?.navigate("CartScreen")}
-      //     />
-      //   </HeaderButtons>
-      // ),
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+          <Item
+            title="Cart"
+            iconName={Platform.OS === "android" ? "md-save" : "ios-save"}
+            onPress={submitHandler}
+          />
+        </HeaderButtons>
+      ),
       headerLeft: () => (
         <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
           <Item
@@ -46,6 +50,7 @@ const EditProductScreen = ({ navigation, route }) => {
           />
         </HeaderButtons>
       ),
+      headerTitle: "edit/create",
     });
   }, []);
 
