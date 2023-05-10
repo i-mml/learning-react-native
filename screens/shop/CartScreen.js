@@ -33,7 +33,9 @@ const CartScreen = () => {
       <View style={s.summary}>
         <Text style={s.summaryText}>
           Total:
-          <Text style={s.amount}>${cartTotalAmount.toFixed(2)}</Text>
+          <Text style={s.amount}>
+            ${Math.round(cartTotalAmount.toFixed(2))}
+          </Text>
         </Text>
         <Button
           title="Order Now"

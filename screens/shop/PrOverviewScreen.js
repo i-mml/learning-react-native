@@ -16,13 +16,13 @@ const PrOverviewScreen = ({ navigation }) => {
   );
   const dispatch = useDispatch();
 
-  const onViewDetail = () =>
+  const onViewDetail = (itemData) =>
     navigation?.navigate("ProductsDetail", {
       productId: itemData?.item?.id,
       productTitle: itemData?.item?.title,
     });
 
-  const onAddToCart = () => {
+  const onAddToCart = (itemData) => {
     dispatch(addToCart(itemData?.item));
   };
 
@@ -54,7 +54,10 @@ const PrOverviewScreen = ({ navigation }) => {
       <FlatList
         data={productsList}
         renderItem={(itemData) => (
-          <ProductItem itemData={itemData} onViewDetail={onViewDetail}>
+          <ProductItem
+            itemData={itemData}
+            onViewDetail={() => onViewDetail(itemData)}
+          >
             <Button
               color={Colors.primary}
               title="View Details"
@@ -63,7 +66,7 @@ const PrOverviewScreen = ({ navigation }) => {
             <Button
               color={Colors.primary}
               title="To Cart"
-              onPress={onAddToCart}
+              onPress={() => onAddToCart(itemData)}
             />
           </ProductItem>
         )}

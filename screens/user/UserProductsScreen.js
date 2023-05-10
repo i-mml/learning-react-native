@@ -13,12 +13,9 @@ const UserProductsScreen = ({ navigation }) => {
   const userProducts = useSelector((state) => state?.products?.userProducts);
   const dispatch = useDispatch();
 
-  console.log(userProducts);
-
-  const onViewDetail = () =>
-    navigation?.navigate("ProductsDetail", {
-      productId: itemData?.item?.id,
-      productTitle: itemData?.item?.title,
+  const onViewDetail = (id) =>
+    navigation?.navigate("editProductScreen", {
+      productId: id,
     });
 
   const onDelete = () => {};
@@ -41,7 +38,10 @@ const UserProductsScreen = ({ navigation }) => {
     <FlatList
       data={userProducts}
       renderItem={(itemData) => (
-        <ProductItem itemData={itemData} onViewDetail={onViewDetail}>
+        <ProductItem
+          itemData={itemData}
+          onViewDetail={() => onViewDetail(itemData?.item?.id)}
+        >
           <Button color={Colors.primary} title="Edit" onPress={onViewDetail} />
           <Button
             color={Colors.primary}
