@@ -4,6 +4,7 @@ import { Text } from "react-native";
 import { StyleSheet } from "react-native";
 import { View } from "react-native";
 import { useSelector } from "react-redux";
+import OrderItem from "../../components/shop/OrderItem";
 
 const OrdersScreen = () => {
   const orders = useSelector((state) => state?.orders);
@@ -14,7 +15,9 @@ const OrdersScreen = () => {
     <View>
       <FlatList
         data={orders}
-        renderItem={(itemData) => <Text>{itemData?.item?.totalAmount}</Text>}
+        renderItem={({ item }) => (
+          <OrderItem amount={item?.totalAmount} date={item?.readableDate} />
+        )}
       />
     </View>
   );
