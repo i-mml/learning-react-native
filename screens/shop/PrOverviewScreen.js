@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { Button, FlatList } from "react-native";
 import { View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../../components/shop/ProductItem";
@@ -8,12 +8,23 @@ import { useEffect } from "react";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../components/UI/HeaderButton";
 import { Platform } from "react-native";
+import Colors from "../../constants/Colors";
 
 const PrOverviewScreen = ({ navigation }) => {
   const productsList = useSelector(
     (state) => state?.products?.availableProducts
   );
   const dispatch = useDispatch();
+
+  const onViewDetail = () =>
+    navigation?.navigate("ProductsDetail", {
+      productId: itemData?.item?.id,
+      productTitle: itemData?.item?.title,
+    });
+
+  const onAddToCart = () => {
+    dispatch(addToCart(itemData?.item));
+  };
 
   useEffect(() => {
     navigation.setOptions({
@@ -43,19 +54,18 @@ const PrOverviewScreen = ({ navigation }) => {
       <FlatList
         data={productsList}
         renderItem={(itemData) => (
-          <ProductItem
-            itemData={itemData}
-            onViewDetail={() =>
-              navigation?.navigate("ProductsDetail", {
-                productId: itemData?.item?.id,
-                productTitle: itemData?.item?.title,
-              })
-            }
-            onAddToCart={() => {
-              console.log("onAddToCart");
-              dispatch(addToCart(itemData?.item));
-            }}
-          />
+          <ProductItem itemData={itemData} onViewDetail={onViewDetail}>
+            <Button
+              color={Colors.primary}
+              title="View Details"
+              onPress={onViewDetail}
+            />
+            <Button
+              color={Colors.primary}
+              title="To Cart"
+              onPress={onAddToCart}
+            />
+          </ProductItem>
         )}
         keyExtractor={(item) => item?.id}
       />

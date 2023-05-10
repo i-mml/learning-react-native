@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import Colors from "../../constants/Colors";
 
-const ProductItem = ({ itemData, onViewDetail, onAddToCart }) => {
+const ProductItem = ({ itemData, onViewDetail, children }) => {
   let TouchableCmp = TouchableOpacity;
 
   if (Platform?.OS === "android" && Platform.Version >= 21) {
@@ -36,18 +36,7 @@ const ProductItem = ({ itemData, onViewDetail, onAddToCart }) => {
               <Text style={s.price}>${itemData?.item?.price?.toFixed(2)}</Text>
             </View>
 
-            <View style={s.actions}>
-              <Button
-                color={Colors.primary}
-                title="View Details"
-                onPress={onViewDetail}
-              />
-              <Button
-                color={Colors.primary}
-                title="To Cart"
-                onPress={onAddToCart}
-              />
-            </View>
+            <View style={s.actions}>{children}</View>
           </View>
         </TouchableCmp>
       </View>

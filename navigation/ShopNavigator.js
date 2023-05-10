@@ -10,6 +10,7 @@ import CartScreen from "../screens/shop/CartScreen";
 import OrdersScreen from "../screens/shop/OrdersScreen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Ionicons } from "@expo/vector-icons";
+import UserProductsScreen from "../screens/user/UserProductsScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -158,6 +159,21 @@ function ShopNavigator() {
   );
 }
 
+function AdminNavigator() {
+  return (
+    <Stack.Navigator screenOptions={defaultStackNavigatorOptions}>
+      <Stack.Screen
+        name="userProductScreen"
+        component={UserProductsScreen}
+        options={{
+          headerTitle: "User Products",
+        }}
+      />
+      <Stack.Screen name="ProductsDetail" component={ProductDetailScreen} />
+    </Stack.Navigator>
+  );
+}
+
 // function MealsFavTabNavigator() {
 //   return (
 //     <Tab.Navigator
@@ -214,6 +230,21 @@ export default function MainNavigator() {
             drawerIcon: (drawerData) => (
               <Ionicons
                 name={Platform.OS === "android" ? "md-cart" : "ios-cart"}
+                size={23}
+                color={drawerData?.tintColor}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Admin"
+          component={AdminNavigator}
+          options={{
+            ...defaultStackNavigatorOptions,
+            headerShown: false,
+            drawerIcon: (drawerData) => (
+              <Ionicons
+                name={Platform.OS === "android" ? "md-person" : "ios-person"}
                 size={23}
                 color={drawerData?.tintColor}
               />
