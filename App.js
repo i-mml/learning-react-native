@@ -4,10 +4,11 @@ import { useState } from "react";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import { enableScreens } from "react-native-screens";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./redux/store";
 import { useCallback } from "react";
 import "react-native-gesture-handler";
+import Layout from "./components/Layout";
 
 // for improve performance in navigations
 enableScreens();
@@ -26,9 +27,11 @@ export default function App() {
       </View>
     );
   }
+
   return (
     <Provider store={store}>
-      <ShopNavigator />
+      {/* <ShopNavigator isAuth={store.getState()?.auth?.isAuth} /> */}
+      <Layout />
     </Provider>
   );
 }
